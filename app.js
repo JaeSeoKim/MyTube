@@ -8,6 +8,8 @@ import cookieParser from "cookie-parser" //for parsing cookie
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globaloRouter from "./routers/globalRouter";
+//import routes model
+import routes from "./routes";
 //express const app
 const app = express();
 
@@ -21,8 +23,8 @@ app.use(helmet()); //secure
 app.use(morgan("dev")); //rog
 
 //router
-app.use('/', globaloRouter);
-app.use('/user', userRouter);
-app.use('/video', videoRouter);
+app.use(routes.home, globaloRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 export default app;
