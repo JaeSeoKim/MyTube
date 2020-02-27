@@ -1,10 +1,17 @@
 // Global
-export const videoHome = (req, res) => res.send("home");
-export const videoSearch = (req, res) => res.send("search");
+export const videoHome = (req, res) =>
+  res.render("home", { pageTitle: "VideoHome" });
+export const videoSearch = (req, res) =>
+  res.render("search", { pageTitle: "VideoSearch" });
 
 // User
-export const videos = (req, res) => res.send("videos");
-export const upload = (req, res) => res.send("upload");
-export const video_detail = (req, res) => res.send("video_detail");
-export const video_edit = (req, res) => res.send("video_edit");
-export const video_delete = (req, res) => res.send("video_delete");
+export const videos = (req, res) =>
+  res.render("videos", { pageTitle: "Videos" });
+export const upload = (req, res) =>
+  res.render("upload", { pageTitle: "Upload" });
+export const video_detail = (req, res) =>
+  res.render("video_detail", { pageTitle: "Video Detail" });
+export const video_edit = (req, res) =>
+  res.render("video_edit", { pageTitle: "Video Edit" });
+export const video_delete = (req, res) =>
+  res.render("video_delete", { pageTitle: "Video Delete" });
