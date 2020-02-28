@@ -1,8 +1,12 @@
 // Global
 export const videoHome = (req, res) =>
   res.render("home", { pageTitle: "VideoHome" });
-export const videoSearch = (req, res) =>
-  res.render("search", { pageTitle: "VideoSearch" });
+export const videoSearch = (req, res) => {
+  const {
+    query: { term : SearchingFor }
+  } = req;
+  res.render("search", { pageTitle: "VideoSearch" , SearchingFor });
+};
 
 // User
 export const videos = (req, res) =>
