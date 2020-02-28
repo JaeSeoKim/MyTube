@@ -1,14 +1,14 @@
 import { videos_db } from "../testDb";
 
 // Global
-export const videoHome = (req, res) =>{
-  res.render("home", { pageTitle: "VideoHome", videos_db }); 
+export const videoHome = (req, res) => {
+  res.render("home", { pageTitle: "VideoHome", videos_db });
 };
 export const videoSearch = (req, res) => {
   const {
-    query: { term : SearchingFor }
+    query: { term: SearchingFor }
   } = req;
-  res.render("search", { pageTitle: "VideoSearch" , SearchingFor });
+  res.render("search", { pageTitle: "VideoSearch", SearchingFor, videos_db });
 };
 
 // User
