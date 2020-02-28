@@ -12,12 +12,12 @@ Cloning Youtube with Vanilla and NodeJS
 ## Pages - User:
 
 - [ ] User Detail
-- [ ] Edit Profile
+- [x] Edit Profile
 - [ ] Change Passwd
 
 
 ## Pages - Video:
 
-- [ ] Video Upload
+- [x] Video Upload
 - [ ] Video Detail
-- [ ] Edit Video
+- [x] Edit Video

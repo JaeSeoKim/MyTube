@@ -1,4 +1,7 @@
 extends layouts/main
 
 block content
-  h1 Video
+  each item in videos_db
+    h1 #{item.title}
+    p #{item.description}
+  
