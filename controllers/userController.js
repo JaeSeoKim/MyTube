@@ -2,32 +2,35 @@ import routes from "../routes";
 
 //  Global
 
+// Join
 export const getJoin = (req, res) => {
   res.render("join", { pageTitle: "Join" });
 };
-// ToDo user join in
-// ToDo user log in
+
 export const postJoin = (req, res) => {
-  const {
-    body = { name, email, password, password2 }
-  } = req;
+  const { body = { name, email, password, password2 } } = req;
   console.log(body);
-  if(body.password != body.password2){
+  if (body.password != body.password2) {
     res.status(400);
-    res.render("join", { pageTitle: "Join" });  
-  }
-  else{
+    res.render("join", { pageTitle: "Join" });
+  } else {
     res.redirect(routes.home);
   }
-  };
+};
 
-export const login = (req, res) => {
+// Login 
+export const getLogin = (req, res) => {
   res.render("login", { pageTitle: "Login" });
 };
-export const logout = (req, res) =>
-  res.render("logout", {
-    pageTitle: "Logout"
-  });
+
+export const postLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
+
+export const logout = (req, res) => {
+  res.redirect(routes.home);
+};
 
 // User
 export const users = (req, res) =>
