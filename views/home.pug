@@ -5,6 +5,7 @@ include mixin/videoBlock
 block content
   each item in videos_db
     +videoBlock({
+      id:item.id,
       file:item.video_file,
       title:item.title,
       views:item.views

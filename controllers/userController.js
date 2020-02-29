@@ -8,6 +8,7 @@ export const getJoin = (req, res) => {
 };
 
 export const postJoin = (req, res) => {
+  // ToDo: need Join process
   const { body = { name, email, password, password2 } } = req;
   console.log(body);
   if (body.password != body.password2) {
@@ -24,11 +25,13 @@ export const getLogin = (req, res) => {
 };
 
 export const postLogin = (req, res) => {
+  // ToDo: need Login process
   res.redirect(routes.home);
 };
 
 
 export const logout = (req, res) => {
+  // ToDo: need logout process
   res.redirect(routes.home);
 };
 
