@@ -1,4 +1,4 @@
-import { videos_db } from "../testDb";
+import { videos_db } from "../db";
 import routes from "../routes";
 
 // Global
