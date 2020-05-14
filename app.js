@@ -27,6 +27,7 @@ app.use(morgan("dev")); //rog
 app.use(localMiddleware); //for use local Variables
 
 //router
+app.use(routes.upload_static, express.static(__dirname + routes.upload_static));
 app.use(routes.home, globaloRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
