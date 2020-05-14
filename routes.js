@@ -47,7 +47,13 @@ const routes = {
       return VIDEO_DETAIL;
     }
   },
-  video_edit: VIDEO_EDIT,
+  video_edit: id => {
+    if (id) {
+      return `/${id}/edit`;
+    } else {
+      return VIDEO_EDIT;
+    }
+  },
   video_delete: VIDEO_DELETE
 };
 

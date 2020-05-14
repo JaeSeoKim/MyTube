@@ -10,7 +10,6 @@ export const getJoin = (req, res) => {
 export const postJoin = (req, res) => {
   // ToDo: need Join process
   const { body = { name, email, password, password2 } } = req;
-  console.log(body);
   if (body.password != body.password2) {
     res.status(400);
     res.render("join", { pageTitle: "Join" });

@@ -3,7 +3,8 @@ import routes from "../routes";
 import {
   videos,
   video_detail,
-  video_edit,
+  getVideo_edit,
+  postVideo_edit,
   video_delete,
   getUpload,
   postUpload
@@ -11,13 +12,19 @@ import {
 import { uploadVieoMiddleware } from "../middlewares";
 const videoRouter = express.Router();
 
-// upload area
+// Video
+videoRouter.get("/", videos);
+
+// Video Upload
 videoRouter.get(routes.upload, getUpload);
 videoRouter.post(routes.upload, uploadVieoMiddleware, postUpload);
 
-videoRouter.get(routes.videos, videos);
-videoRouter.get(routes.video_edit, video_edit);
+// Video Edit
+videoRouter.get(routes.video_edit(), getVideo_edit);
+videoRouter.post(routes.video_edit(), postVideo_edit);
+
 videoRouter.get(routes.video_delete, video_delete);
+
 videoRouter.get(routes.video_detail(), video_detail);
 
 export default videoRouter;
