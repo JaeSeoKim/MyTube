@@ -3,11 +3,10 @@ include mixin/videoBlock
 
 
 block content
-  each item in videos_db
+  each item in videos
     +videoBlock({
       id:item.id,
-      file:item.video_file,
+      file:item.fileUrl,
       title:item.title,
       views:item.views
     })
-  

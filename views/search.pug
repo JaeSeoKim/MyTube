@@ -6,7 +6,7 @@ block content
   .search__header
     h3 Searching for:  #{SearchingFor}
   .search__video
-    each item in videos_db
+    each item in videos
       +videoBlock({
         file:item.video_file,
         title:item.title,

@@ -1,15 +1,22 @@
-import { videos_db } from "../db";
 import routes from "../routes";
+import Video from "../models/Video";
 
 // Global
-export const videoHome = (req, res) => {
-  res.render("home", { pageTitle: "VideoHome", videos_db });
+export const videoHome = async (req, res) => {
+  try {
+    const videos = await Video.find({});
+    console.log(videos);
+    res.render("home", { pageTitle: "VideoHome", videos });
+  } catch (error) {
+    console.log(error);
+    res.render("home", { pageTitle: "VideoHome", videos: [] });
+  }
 };
 export const videoSearch = (req, res) => {
   const {
     query: { term: SearchingFor }
   } = req;
-  res.render("search", { pageTitle: "VideoSearch", SearchingFor, videos_db });
+  res.render("search", { pageTitle: "VideoSearch", SearchingFor, videos });
 };
 
 // User
@@ -19,12 +26,18 @@ export const videos = (req, res) =>
 // upload area
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
-export const postUpload = (req, res) => {
+export const postUpload = async (req, res) => {
   const {
-    body: { file, title, video_desc }
+    body: { title, descrtion },
+    file: { path }
   } = req;
-  // ToDo: upload video process
-  res.redirect(routes.videos + routes.video_detail(123));
+  const newVideo = await Video.create({
+    fileUrl: path,
+    title,
+    descrtion
+  });
+  console.log(newVideo);
+  res.redirect(routes.videos + routes.video_detail(newVideo.id));
 };
 
 export const video_detail = (req, res) =>
