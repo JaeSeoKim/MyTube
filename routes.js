@@ -1,66 +1,66 @@
 // Static
-const UPLOAD_STATIC = "/uploads";
+const UPLOAD_STATIC = '/uploads'
 
 // Global
-const HOME = "/";
-const JOIN = "/join";
-const LOGIN = "/login";
-const LOGOUT = "/logout";
-const SEARCH = "/search";
+const HOME = '/'
+const JOIN = '/join'
+const LOGIN = '/login'
+const LOGOUT = '/logout'
+const SEARCH = '/search'
 
 // Users
-const USERS = "/users";
-const USER_DETAIL = "/:id";
-const EDIT_PROFILE = "/edit-profile";
-const CHANGE_PASSWORD = "/change-password";
+const USERS = '/users'
+const USER_DETAIL = '/:id'
+const EDIT_PROFILE = '/edit-profile'
+const CHANGE_PASSWORD = '/change-password'
 
 // Videos
-const VIDEOS = "/videos";
-const UPLOAD = "/upload";
-const VIDEO_DETAIL = "/:id";
-const VIDEO_EDIT = "/:id/edit";
-const VIDEO_DELETE = "/:id/delete";
+const VIDEOS = '/videos'
+const UPLOAD = '/upload'
+const VIDEO_DETAIL = '/:id'
+const VIDEO_EDIT = '/:id/edit'
+const VIDEO_DELETE = '/:id/delete'
 
 const routes = {
-  upload_static: UPLOAD_STATIC,
+  uploadStatic: UPLOAD_STATIC,
   home: HOME,
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,
   search: SEARCH,
   users: USERS,
-  user_detail: id => {
+  userDetail: id => {
     if (id) {
-      return `/${id}`;
+      return `/${id}`
     } else {
-      return USER_DETAIL;
+      return USER_DETAIL
     }
   },
-  edit_profile: EDIT_PROFILE,
-  change_password: CHANGE_PASSWORD,
+  editProfile: EDIT_PROFILE,
+  changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
-  video_detail: id => {
+  videoDetail: id => {
     if (id) {
-      return `/${id}`;
+      return `/${id}`
     } else {
-      return VIDEO_DETAIL;
+      return VIDEO_DETAIL
     }
   },
-  video_edit: id => {
+  videoEdit: id => {
     if (id) {
-      return `/${id}/edit`;
+      return `/${id}/edit`
     } else {
-      return VIDEO_EDIT;
+      return VIDEO_EDIT
     }
   },
-  video_delete: id => {
+  videoDelete: id => {
     if (id) {
-      return `/${id}/delete`;
+      return `/${id}/delete`
     } else {
-      return VIDEO_DELETE;
+      return VIDEO_DELETE
     }
   }
-};
+}
 
-export default routes;
+export default routes

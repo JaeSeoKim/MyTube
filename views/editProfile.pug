@@ -1,0 +1,10 @@
+extends layouts/main
+
+block content
+  .form-container
+    label(for="avatar") Avatar
+      input(type="file" id="avatar" name="avatar")
+    input(type="text" placeholder="Name" name="name")
+    input(type="email" placeholder="Email" name="Email")
+    input(type="submit" value="Update Profile")
+  a.form-container--link(href=`${routes.users}${routes.changePassword}`) Change Password!

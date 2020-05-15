@@ -4,7 +4,7 @@ block content
   .video__player
     video(src=`/${video.fileUrl}` controls="controls")
   .video__detail
-    a(href=`${routes.videos}${routes.video_edit(video.id)}`) Edit Video
+    a(href=`${routes.videos}${routes.videoEdit(video.id)}`) Edit Video
     h5.video__title=video.title
     span.video__views=video.views
-    p.video__description=video.description 
+    p.video__description=video.description

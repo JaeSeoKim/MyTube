@@ -1,35 +1,39 @@
-import express from "express"; //web server engin
-//express middleware
-import morgan from "morgan"; //web logger
-import helmet from "helmet"; //web secure engine
-import bodyParser from "body-parser"; //for parsing body ex> POST, GET
-import cookieParser from "cookie-parser"; //for parsing cookie
-//router module
-import { localMiddleware } from "./middlewares";
-import routes from "./routes";
-import userRouter from "./routers/userRouter";
-import videoRouter from "./routers/videoRouter";
-import globaloRouter from "./routers/globalRouter";
-//express const app
-const app = express();
+import express from 'express' // web server engin
+// express middleware
+import morgan from 'morgan' // web logger
+import helmet from 'helmet' // web secure engine
+import bodyParser from 'body-parser' // for parsing body ex> POST, GET
+import cookieParser from 'cookie-parser' // for parsing cookie
+import path from 'path' // for dir path
+// router module
+import { localMiddleware } from './middlewares'
+import routes from './routes'
+import userRouter from './routers/userRouter'
+import videoRouter from './routers/videoRouter'
+import globaloRouter from './routers/globalRouter'
+// express const app
+const app = express()
 
-//set midleware
-app.use(helmet()); //secure
-app.set("view engine", "pug"); //set view engine
-app.use(cookieParser());
-app.use(bodyParser.json());
+//  set midleware
+app.use(helmet()) //  secure
+app.set('view engine', 'pug') //  set view engine
+app.use(cookieParser())
+app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
     extended: true
   })
-);
-app.use(morgan("dev")); //rog
-app.use(localMiddleware); //for use local Variables
+)
+app.use(morgan('dev')) //  log
+app.use(localMiddleware) //  for use local Variables
 
-//router
-app.use(routes.upload_static, express.static(__dirname + routes.upload_static));
-app.use(routes.home, globaloRouter);
-app.use(routes.users, userRouter);
-app.use(routes.videos, videoRouter);
+//  router
+app.use(
+  routes.uploadStatic,
+  express.static(path.join(__dirname, routes.uploadStatic))
+)
+app.use(routes.home, globaloRouter)
+app.use(routes.users, userRouter)
+app.use(routes.videos, videoRouter)
 
-export default app;
+export default app
