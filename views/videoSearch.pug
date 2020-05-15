@@ -4,11 +4,14 @@ include mixin/videoBlock
 
 block content
   .search__header
-    h3 Searching for:  #{SearchingFor}
+    h3 Searching By:  #{searchingBy}
   .search__video
+    if videos.length === 0
+      h5 h5 No Videos Found
     each item in videos
       +videoBlock({
-        file:item.video_file,
+        id:item.id,
+        file:item.fileUrl,
         title:item.title,
         views:item.views
       })

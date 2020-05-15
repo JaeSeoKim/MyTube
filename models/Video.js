@@ -13,7 +13,7 @@ const VideoSchema = new monogoose.Schema({
     default: Date.now
   },
 
-  comment: [
+  comments: [
     {
       type: monogoose.Schema.Types.ObjectId,
       ref: 'Comment'

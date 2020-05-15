@@ -11,11 +11,17 @@ export const videoHome = async (req, res) => {
   }
 }
 
-export const videoSearch = (req, res) => {
+export const videoSearch = async (req, res) => {
   const {
-    query: { term: SearchingFor }
+    query: { term: searchingBy }
   } = req
-  res.render('search', { pageTitle: 'VideoSearch', SearchingFor, videos })
+  let videos = []
+  try {
+    videos = await Video.find({
+      title: { $regex: searchingBy, $options: 'i' }
+    })
+  } catch (error) {}
+  res.render('videoSearch', { pageTitle: 'VideoSearch', searchingBy, videos })
 }
 
 // User
@@ -44,6 +50,7 @@ export const videoDetail = async (req, res) => {
       params: { id }
     } = req
     const video = await Video.findById(id)
+    console.log(video)
     res.render('videoDetail', { pageTitle: video.title, video })
   } catch (error) {
     res.redirect(routes.home)
