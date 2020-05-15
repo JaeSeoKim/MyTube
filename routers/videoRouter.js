@@ -23,7 +23,7 @@ videoRouter.post(routes.upload, uploadVieoMiddleware, postUpload);
 videoRouter.get(routes.video_edit(), getVideo_edit);
 videoRouter.post(routes.video_edit(), postVideo_edit);
 
-videoRouter.get(routes.video_delete, video_delete);
+videoRouter.get(routes.video_delete(), video_delete);
 
 videoRouter.get(routes.video_detail(), video_detail);
 
