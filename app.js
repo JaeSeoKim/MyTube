@@ -32,6 +32,7 @@ app.use(
   routes.uploadStatic,
   express.static(path.join(__dirname, routes.uploadStatic))
 )
+app.use(routes.static, express.static(path.join(__dirname, routes.static)))
 app.use(routes.home, globaloRouter)
 app.use(routes.users, userRouter)
 app.use(routes.videos, videoRouter)

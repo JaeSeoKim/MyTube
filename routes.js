@@ -1,4 +1,5 @@
 // Static
+const STATIC = '/static'
 const UPLOAD_STATIC = '/uploads'
 
 // Global
@@ -22,6 +23,7 @@ const VIDEO_EDIT = '/:id/edit'
 const VIDEO_DELETE = '/:id/delete'
 
 const routes = {
+  static: STATIC,
   uploadStatic: UPLOAD_STATIC,
   home: HOME,
   join: JOIN,
