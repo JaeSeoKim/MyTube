@@ -1,4 +1,6 @@
 import routes from '../routes'
+import User from '../models/User'
+import passport from 'passport'
 
 //  Global
 
@@ -7,17 +9,25 @@ export const getJoin = (req, res) => {
   res.render('join', { pageTitle: 'Join' })
 }
 
-export const postJoin = (req, res) => {
-  // ToDo: need Join process
+export const postJoin = async (req, res, next) => {
   const {
-    // eslint-disable-next-line no-unused-vars
     body: { name, email, password, password2 }
   } = req
   if (password !== password2) {
     res.status(400)
     res.render('join', { pageTitle: 'Join' })
   } else {
-    res.redirect(routes.home)
+    try {
+      const user = await User({
+        name,
+        email
+      })
+      await User.register(user, password)
+      next()
+    } catch (error) {
+      console.log(error)
+      res.redirect(routes.home)
+    }
   }
 }
 
@@ -26,10 +36,10 @@ export const getLogin = (req, res) => {
   res.render('login', { pageTitle: 'Login' })
 }
 
-export const postLogin = (req, res) => {
-  // ToDo: need Login process
-  res.redirect(routes.home)
-}
+export const postLogin = passport.authenticate('local', {
+  failureRedirect: routes.login,
+  successRedirect: routes.home
+})
 
 export const logout = (req, res) => {
   // ToDo: need logout process

@@ -13,14 +13,14 @@ const globalRouter = express.Router()
 
 // join area
 globalRouter.get(routes.join, getJoin)
-globalRouter.post(routes.join, postJoin)
+globalRouter.post(routes.join, postJoin, postLogin)
 
 // login area
 globalRouter.get(routes.login, getLogin)
 globalRouter.post(routes.login, postLogin)
+globalRouter.get(routes.logout, logout)
 
 globalRouter.get(routes.home, videoHome)
-globalRouter.get(routes.logout, logout)
 globalRouter.get(routes.search, videoSearch)
 
 export default globalRouter
