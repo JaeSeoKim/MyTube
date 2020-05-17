@@ -2,8 +2,6 @@ import routes from '../routes'
 import User from '../models/User'
 import passport from 'passport'
 
-//  Global
-
 // Join
 export const getJoin = (req, res) => {
   res.render('join', { pageTitle: 'Join' })
@@ -42,15 +40,11 @@ export const postLogin = passport.authenticate('local', {
 })
 
 export const logout = (req, res) => {
-  // ToDo: need logout process
+  req.logout()
   res.redirect(routes.home)
 }
 
 // User
-export const users = (req, res) =>
-  res.render('users', {
-    pageTitle: 'users'
-  })
 export const userDetail = (req, res) =>
   res.render('userDetail', {
     pageTitle: 'User Detail'

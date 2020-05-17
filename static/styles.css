@@ -152,7 +152,7 @@ body {
 
 main {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 70vh;
   padding: 45px; }
@@ -197,6 +197,9 @@ textarea,
 
 button {
   border: none; }
+
+button:hover {
+  background-color: gainsboro; }
 
 button.delete {
   background-color: #bb2f2a; }

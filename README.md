@@ -1,4 +1,4 @@
-# webtube
+# MyTube
 
 Cloning Youtube with Vanilla and NodeJS
 
