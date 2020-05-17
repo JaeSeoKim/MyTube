@@ -18,8 +18,34 @@ main {
   padding: 45px;
 }
 
-@media (max-width: 767px) {
-  main {
-    padding: 10px;
+button,
+input:not([type="file"]),
+textarea,
+.fileUpload {
+  padding: 7px 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  color: $black;
+  font-weight: 600;
+  background-color: white;
+  max-width: 320px;
+  resize: none;
+  &::placeholder {
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
   }
+}
+button {
+  border: none;
+}
+
+button.delete {
+  background-color: $dark-red;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
 }

@@ -48,6 +48,7 @@
           }
         }
         button {
+          width: auto;
           padding: 7px 10px;
           border: 1px solid;
           border-color: $dark-grey;
@@ -65,5 +66,11 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1220px) {
+  .header__wrapper {
+    width: 100%;
   }
 }

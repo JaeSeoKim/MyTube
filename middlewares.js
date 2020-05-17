@@ -6,7 +6,7 @@ const multerVideo = multer({ dest: 'uploads/videos/' })
 export const uploadVieoMiddleware = multerVideo.single('file')
 
 export const localMiddleware = (req, res, next) => {
-  app.locals.sitename = 'WeTube'
+  app.locals.sitename = 'MyTube'
   app.locals.routes = routes
   app.locals.user = {
     isAuthenticated: true,
