@@ -2,6 +2,41 @@ import routes from '../routes'
 import User from '../models/User'
 import passport from 'passport'
 
+export const githubLogin = passport.authenticate('github')
+
+export const githubLoginCallback = async (
+  accessToken,
+  refreshToken,
+  profile,
+  cb
+) => {
+  // TODO: if profile["_json"].email === undefined => 추가 정보를 받아 회원 가입 필요
+  const {
+    _json: { id, avatar_url: avatarUrl, name, email }
+  } = profile
+  try {
+    const user = await User.findOne({ email })
+    if (user) {
+      user.githubId = id
+      user.save()
+      return cb(null, user)
+    }
+    const newUser = await User.create({
+      email,
+      name,
+      githubId: id,
+      avatarUrl
+    })
+    return cb(null, newUser)
+  } catch (error) {
+    return cb(error)
+  }
+}
+
+export const postGithubLogIn = (req, res) => {
+  res.redirect(routes.home)
+}
+
 // Join
 export const getJoin = (req, res) => {
   res.render('join', { pageTitle: 'Join' })

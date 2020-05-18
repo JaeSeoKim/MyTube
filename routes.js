@@ -22,7 +22,13 @@ const VIDEO_DETAIL = '/:id'
 const VIDEO_EDIT = '/:id/edit'
 const VIDEO_DELETE = '/:id/delete'
 
+// Github
+const GITHUB = '/auth/github'
+const GITHUB_CALLBACK = '/auth/github/callback'
+
 const routes = {
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
   static: STATIC,
   uploadStatic: UPLOAD_STATIC,
   home: HOME,
