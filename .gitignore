@@ -112,3 +112,5 @@ temp/
 
 # Add upload Video Folder
 uploads/videos/*
+# Add upload Img Folder
+uploads/imgs/*

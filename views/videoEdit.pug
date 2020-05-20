@@ -6,4 +6,4 @@ block content
       input(type="text" placeholder="Video Title" name="title" value=video.title)
       textarea(type="text" placeholder="Video Description" name="description" cols="30" rows="10")=video.description
       input(type="submit" value="Update Video")
-    a.form-container--link(href=`${routes.videos}${routes.videoDelete(video.id)}`) Video Delete!
+      a.form-container--link(href=`${routes.videos}${routes.videoDelete(video.id)}`) Video Delete!

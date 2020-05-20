@@ -2,7 +2,10 @@ extends layouts/main
 
 block content
   .form-container
-    form(action=routes.join, method="post")
+    form(action=routes.join, method="post" enctype="multipart/form-data")
+      div.fileUpload
+        label(for="avatar") Avatar
+          input(type="file" id="avatar" name='avatar' , accept="image/*")
       input(type="text" name="name" placeholder="Full Name", required=true)
       input(type="email" name="email" placeholder="Email", required=true)
       input(type="password" name="password" placeholder="Password", required=true)

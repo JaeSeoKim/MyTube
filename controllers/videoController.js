@@ -39,8 +39,11 @@ export const postUpload = async (req, res) => {
   const newVideo = await Video.create({
     fileUrl: path,
     title,
-    description
+    description,
+    creator: req.user.id
   })
+  req.user.videos.push(newVideo.id)
+  req.user.save()
   res.redirect(routes.videos + routes.videoDetail(newVideo.id))
 }
 
@@ -49,7 +52,7 @@ export const videoDetail = async (req, res) => {
     const {
       params: { id }
     } = req
-    const video = await Video.findById(id)
+    const video = await Video.findById(id).populate('creator')
     res.render('videoDetail', { pageTitle: video.title, video })
   } catch (error) {
     res.redirect(routes.home)
@@ -61,6 +64,9 @@ export const getVideoEdit = async (req, res) => {
       params: { id }
     } = req
     const video = await Video.findById(id)
+    if (String(video.creator) !== String(req.user.id)) {
+      throw Error()
+    }
     res.render('videoEdit', { pageTitle: video.title, video })
   } catch (error) {
     res.redirect(routes.home)
@@ -73,7 +79,12 @@ export const postVideoEdit = async (req, res) => {
       params: { id },
       body: { title, description }
     } = req
-    await Video.findOneAndUpdate({ _id: id }, { title, description })
+    const video = await Video.findById(id)
+    if (String(video.creator) !== String(req.user.id)) {
+      throw Error()
+    }
+    await video.update({ title, description })
+    await video.save()
     res.redirect(`${routes.videos}${routes.videoDetail(id)}`)
   } catch (error) {
     res.redirect(routes.home)
@@ -85,7 +96,11 @@ export const videoDelete = async (req, res) => {
     const {
       params: { id }
     } = req
-    await Video.findOneAndDelete({ _id: id })
+    const video = await Video.findById(id)
+    if (String(video.creator) !== String(req.user.id)) {
+      throw Error()
+    }
+    await video.remove()
     res.redirect(routes.home)
   } catch (error) {
     res.redirect(routes.home)

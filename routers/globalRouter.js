@@ -8,16 +8,25 @@ import {
   getLogin,
   postLogin,
   postGithubLogIn,
-  githubLogin
+  githubLogin,
+  getMyProfile,
+  facebookLogin,
+  postFacebookLogin
 } from '../controllers/userController'
-import { onlyPrivate, onlyPublic } from '../middlewares'
+import { onlyPrivate, onlyPublic, uploadImgMiddleware } from '../middlewares'
 import passport from 'passport'
 
 const globalRouter = express.Router()
 
 // join area
 globalRouter.get(routes.join, onlyPublic, getJoin)
-globalRouter.post(routes.join, onlyPublic, postJoin, postLogin)
+globalRouter.post(
+  routes.join,
+  onlyPublic,
+  uploadImgMiddleware,
+  postJoin,
+  postLogin
+)
 
 // login area
 globalRouter.get(routes.login, onlyPublic, getLogin)
@@ -33,6 +42,15 @@ globalRouter.get(
   postGithubLogIn
 )
 
+// Facebook Login
+globalRouter.get(routes.facebook, facebookLogin)
+globalRouter.get(
+  routes.facebookCallback,
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  postFacebookLogin
+)
+
+globalRouter.get(routes.myProfile, onlyPrivate, getMyProfile)
 globalRouter.get(routes.home, videoHome)
 globalRouter.get(routes.search, videoSearch)
 

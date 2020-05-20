@@ -1,0 +1,23 @@
+mixin videoPlayer(video = {})
+  .videoPlayer#jsVideoPlayer
+    video(src=`/${video.src}`)
+    .videoPlayer__controls
+      .videoPlayer__grid
+        .videoPlayer__PlaytTime
+          span#currentTime 00:00:00
+          span /
+          sapn#totalTime 00:00:00
+        .videpPlayer__controlBar
+          input(type="range" min="0" step="0.0001" value="0")#jsControlBar
+      .videoPlayer__grid
+        .videoPlayer__volume
+          span#jsVolumeBtn
+            i.fas.fa-volume-up
+          .videoPlayer__volumeBar
+            input(type="range" min="0.0" max="1" step="0.1" value="1" orient="vertical")#jsVolumeBar
+        .videoPlayer__play
+          span#jsPlayButton
+            i.fas.fa-play
+        .videoPlayer__expand
+          span#jsFullScreen
+            i.fas.fa-expand

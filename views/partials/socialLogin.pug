@@ -1,10 +1,9 @@
 .social-login
-  button.social-login--github
+  button.social-login--github(onclick = `location.href = "${routes.github}"`)
     span
-      a(href=routes.github)
-        i.fab.fa-github
-        |Login with Github
-  button.social-login--facebook
+      i.fab.fa-github
+      |Login with Github
+  button.social-login--facebook(onclick = `location.href = "${routes.facebook}"`)
     span
       i.fab.fa-facebook
       |Login with Facebook

@@ -1,0 +1,114 @@
+.videoPlayer {
+  position: relative;
+  video {
+    width: 100%;
+  }
+  &:hover {
+    .videoPlayer__controls {
+      opacity: 1;
+    }
+  }
+  .videoPlayer__controls {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: grid;
+    position: absolute;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.4s linear;
+    position: absolute;
+    z-index: 9;
+    bottom: 0px;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    .videoPlayer__grid:first-child {
+      display: grid;
+      grid-template-columns: 1fr 4fr 1fr;
+      padding-bottom: 10px;
+      align-content: center;
+      .videoPlayer__PlaytTime {
+        justify-self: start;
+      }
+      .videpPlayer__controlBar {
+        text-align: center;
+        justify-content: center;
+        height: 10px;
+        input {
+          appearance: none;
+          padding: 0;
+          width: 100%;
+          height: 10px;
+          overflow: hidden;
+          background: transparent;
+          background: white;
+          border-radius: 5;
+          outline: none;
+          cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 10px;
+          height: 10px;
+          background: #4e4e4e;
+          box-shadow: -100vw 0 0 100vw #a0a0a0;
+          cursor: pointer;
+        }
+      }
+    }
+    .videoPlayer__grid:last-child {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      .videoPlayer__volume {
+        justify-self: start;
+        .videoPlayer__volumeBar {
+          background-color: rgba(0, 0, 0, 0.5);
+          width: 130px;
+          height: 30px;
+          overflow: hidden;
+          position: absolute;
+          left: -45px;
+          top: -45px;
+          transform: rotate(270deg);
+          display: none;
+          input {
+            position: relative;
+            right: -20px;
+            bottom: -5px;
+            appearance: none;
+            padding: 0;
+            width: 100px;
+            height: 10px;
+            overflow: hidden;
+            background: transparent;
+            background: white;
+            border-radius: 5;
+            outline: none;
+            cursor: pointer;
+          }
+          input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            background: #4e4e4e;
+            box-shadow: -100vw 0 0 100vw #a0a0a0;
+            cursor: pointer;
+          }
+        }
+        &:hover .videoPlayer__volumeBar {
+          display: block;
+        }
+      }
+      .videoPlayer__play {
+        justify-self: center;
+      }
+      .videoPlayer__expand {
+        justify-self: end;
+      }
+    }
+    i {
+      font-size: 25px;
+      cursor: pointer;
+    }
+  }
+}

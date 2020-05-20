@@ -1,6 +1,8 @@
 // config
 @import "config/_variables.scss";
 @import "config/reset.scss";
+@import "~normalize.css/normalize.css";
+@import "config/utils.scss";
 // main
 @import "main.scss";
 // patuals
@@ -9,6 +11,8 @@
 @import "partials/form.scss";
 @import "partials/socialLogin.scss";
 @import "partials/videoBlock.scss";
+@import "partials/videoPlayer.scss";
 // pages
 @import "pages/home.scss";
 @import "pages/videoDetail.scss";
+@import "pages/userDetail.scss";

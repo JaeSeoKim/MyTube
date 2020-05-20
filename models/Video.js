@@ -1,6 +1,6 @@
-import monogoose from 'mongoose'
+import mongoose from 'mongoose'
 
-const VideoSchema = new monogoose.Schema({
+const VideoSchema = new mongoose.Schema({
   fileUrl: { type: String, required: 'FileUrl is Required' },
   title: { type: String, required: 'Title is Required' },
   description: String,
@@ -12,14 +12,17 @@ const VideoSchema = new monogoose.Schema({
     type: Date,
     default: Date.now
   },
-
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
   comments: [
     {
-      type: monogoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment'
     }
   ]
 })
 
-const model = monogoose.model('Video', VideoSchema)
+const model = mongoose.model('Video', VideoSchema)
 export default model

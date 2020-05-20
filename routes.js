@@ -14,6 +14,7 @@ const USERS = '/users'
 const USER_DETAIL = '/:id'
 const EDIT_PROFILE = '/edit-profile'
 const CHANGE_PASSWORD = '/change-password'
+const MY_PROFILE = '/myProfile'
 
 // Videos
 const VIDEOS = '/videos'
@@ -26,9 +27,11 @@ const VIDEO_DELETE = '/:id/delete'
 const GITHUB = '/auth/github'
 const GITHUB_CALLBACK = '/auth/github/callback'
 
+// Facebook
+const FACEBOOK = '/auth/facebook'
+const FACEBOOK_CALLBACK = '/auth/facebook/callback'
+
 const routes = {
-  github: GITHUB,
-  githubCallback: GITHUB_CALLBACK,
   static: STATIC,
   uploadStatic: UPLOAD_STATIC,
   home: HOME,
@@ -68,7 +71,12 @@ const routes = {
     } else {
       return VIDEO_DELETE
     }
-  }
+  },
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
+  facebook: FACEBOOK,
+  facebookCallback: FACEBOOK_CALLBACK,
+  myProfile: MY_PROFILE
 }
 
 export default routes
