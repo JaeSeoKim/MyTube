@@ -23,8 +23,26 @@ block content
         a(href=`${routes.users}${routes.userDetail(video.creator.id)}`)=video.creator.name
     .video__comments
       if video.comments.length === 0
-        span.video__comment-number No comment
+        span.video__comment-number#jsCommentNumber No
+        |#{'\t'} comment
       else if video.comments.length === 1
-        span.video__comment-number 1 comment
+        span.video__comment-number#jsCommentNumber 1
+        |#{'\t'} comment
       else
-        span.video__comment-number #{video.comments.length} comments
+        span.video__comment-number#jsCommentNumber #{video.comments.length}
+        |#{'\t'} comments
+      if loggedUser
+        form.add__comment#jsAddComment
+          input(type="text" placeholder="Add a comment")
+      ul.video__comments-list#jsCommentList
+        each comment in video.comments.reverse()
+          li
+            div
+              img(src=comment.creator.avatarUrl alt="profile" sizes="50px")
+              |#{"\t"}
+              span=comment.creator.name
+              if loggedUser && comment.creator.id === loggedUser.id
+                i(class="fas fa-trash-alt")#jsRemoveComment
+                  span=comment.id
+            .video__comments-text
+              span=comment.text

@@ -110,6 +110,18 @@ function handelControlVideo () {
   videoPlayer.currentTime = controlBar.value
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime))
 }
+function handleEnded () {
+  registerView()
+  videoPlayer.currentTime = 0
+  playBtn.innerHTML = '<i class="fas fa-play"></i>'
+}
+
+function registerView () {
+  const videoId = window.location.href.split('/videos/')[1]
+  fetch(`/api/${videoId}/view`, {
+    method: 'POST'
+  })
+}
 
 function init () {
   playBtn.addEventListener('click', handlePlayClick)
@@ -118,6 +130,7 @@ function init () {
   fullScrnBtn.addEventListener('click', goFullScreen)
   videoPlayer.addEventListener('loadedmetadata', setTotalTime)
   controlBar.addEventListener('input', handelControlVideo)
+  videoPlayer.addEventListener('ended', handleEnded)
 }
 
 if (videoContainer) {

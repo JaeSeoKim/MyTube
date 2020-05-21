@@ -17,6 +17,7 @@ import routes from './routes'
 import userRouter from './routers/userRouter'
 import videoRouter from './routers/videoRouter'
 import globaloRouter from './routers/globalRouter'
+import apiRouter from './routers/apiRouter'
 // express const app
 dotenv.config()
 const app = express()
@@ -56,5 +57,6 @@ app.use(routes.static, express.static(path.join(__dirname, routes.static)))
 app.use(routes.home, globaloRouter)
 app.use(routes.users, userRouter)
 app.use(routes.videos, videoRouter)
+app.use(routes.api, apiRouter)
 
 export default app
