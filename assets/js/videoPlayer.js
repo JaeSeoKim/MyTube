@@ -100,17 +100,20 @@ function getCurrentTime () {
 }
 
 const getBlobDuration = async video => {
+  const tempVideoEl = document.createElement('video')
+  tempVideoEl.src = video.src
   const duration = await new Promise(resolve => {
-    if (video.duration === Infinity) {
-      video.currentTime = Number.MAX_SAFE_INTEGER
-      video.ontimeupdate = () => {
-        video.ontimeupdate = null
-        resolve(video.duration)
-        video.currentTime = 0
-      }
-    } else resolve(video.duration)
+    tempVideoEl.addEventListener('loadedmetadata', () => {
+      if (tempVideoEl.duration === Infinity) {
+        tempVideoEl.currentTime = Number.MAX_SAFE_INTEGER
+        tempVideoEl.ontimeupdate = () => {
+          tempVideoEl.ontimeupdate = null
+          resolve(tempVideoEl.duration)
+          tempVideoEl.currentTime = 0
+        }
+      } else resolve(tempVideoEl.duration)
+    })
   })
-  console.log(duration)
   return duration
 }
 
@@ -126,6 +129,7 @@ function handelControlVideo () {
   videoPlayer.currentTime = controlBar.value
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime))
 }
+
 function handleEnded () {
   registerView()
   videoPlayer.currentTime = 0
