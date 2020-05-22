@@ -9,6 +9,7 @@ import path from 'path' // for dir path
 import mongoose from 'mongoose' // for mongo session store
 import session from 'express-session' // for sessoin
 import MongoStore from 'connect-mongo' // for sessoin store
+import flash from 'express-flash' // for app flash
 import passport from 'passport' // for user Authentication
 import './passport' // SetUp Passport
 // router module
@@ -43,6 +44,7 @@ app.use(
     store: new CokieStore({ mongooseConnection: mongoose.connection })
   })
 )
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 

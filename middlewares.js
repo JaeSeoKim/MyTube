@@ -16,6 +16,7 @@ export const localMiddleware = (req, res, next) => {
 
 export const onlyPublic = (req, res, next) => {
   if (req.user) {
+    req.flash('info', 'You are logged!!')
     res.redirect(routes.home)
   } else {
     next()
@@ -26,6 +27,7 @@ export const onlyPrivate = (req, res, next) => {
   if (req.user) {
     next()
   } else {
+    req.flash('info', 'You need login!!')
     res.redirect(routes.home)
   }
 }
