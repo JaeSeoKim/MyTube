@@ -99,10 +99,26 @@ function getCurrentTime () {
   currentTime.innerHTML = formatDate(videoPlayer.currentTime)
 }
 
-function setTotalTime () {
-  const totalTimeString = formatDate(videoPlayer.duration)
+const getBlobDuration = async video => {
+  const duration = await new Promise(resolve => {
+    if (video.duration === Infinity) {
+      video.currentTime = Number.MAX_SAFE_INTEGER
+      video.ontimeupdate = () => {
+        video.ontimeupdate = null
+        resolve(video.duration)
+        video.currentTime = 0
+      }
+    } else resolve(video.duration)
+  })
+  console.log(duration)
+  return duration
+}
+
+async function setTotalTime () {
+  const duration = await getBlobDuration(videoPlayer)
+  const totalTimeString = formatDate(duration)
   totalTime.innerHTML = totalTimeString
-  controlBar.max = videoPlayer.duration
+  controlBar.max = duration
   setInterval(getCurrentTime, 10)
 }
 
